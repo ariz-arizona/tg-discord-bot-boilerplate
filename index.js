@@ -18,9 +18,11 @@ app.use(express.json({
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 
+app.use('/', require('./adapters/tg.js'));
+
 app.use('/', require('./adapters/discord.js'));
 
-app.use('/', require('./adapters/tg.js'));
+app.use('/', require('./discord/test'));
 
 app.get('/', async (_req, res) => {
     res.send(`Listening on ${CURRENT_HOST}:${APP_PORT})`);

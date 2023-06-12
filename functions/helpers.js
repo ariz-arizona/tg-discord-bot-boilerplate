@@ -11,4 +11,10 @@ const replyMarkup = (keyboard, chat_id, message_id) => {
     if (message_id) reply_markup.message_id = message_id;
 }
 
-module.exports = { array_chunks, replyMarkup }
+const getPath = (_req) => {
+    const isHttps = _req.headers.host.indexOf("localhost") !== -1 || _req.headers.host.indexOf("127.0.0.1") !== -1;
+    return `http${isHttps ? "" : "s"}://${_req.headers.host
+        }`;
+};
+
+module.exports = { array_chunks, replyMarkup, getPath }

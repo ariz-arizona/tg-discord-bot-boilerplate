@@ -1,0 +1,20 @@
+{
+  "name": "tg-bot-boilerplate",
+  "version": "1.0.0",
+  "description": "Boilerplate for tg / discord bots",
+  "main": "index.js",
+  "scripts": {
+    "start_debug": "npm cache clean --force && DEBUG='*' node index.js 2>&1| tee logs/log_$(date +'%s').txt",
+    "start": "npm cache clean --force && node index.js 2>&1| tee logs/log_$(date +'%s').txt",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cross-fetch": "^3.1.6",
+    "discord-interactions": "^3.4.0",
+    "dotenv": "^16.1.4",
+    "node-telegram-bot-api": "^0.61.0"
+  }
+}
