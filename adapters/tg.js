@@ -2,7 +2,7 @@ const router = require('express').Router();
 const TelegramBot = require('node-telegram-bot-api');
 const testFunction = require('../tg/test');
 const { replyMarkup } = require('../functions/helpers');
-const { TG_TOKEN, CURRENT_HOST } = process.env;
+const { TG_TOKEN, CURRENT_HOST, CHAT_ERROR_ID, npm_package_name } = process.env;
 
 const bot = new TelegramBot(TG_TOKEN);
 bot.setWebHook(
@@ -32,8 +32,14 @@ router.post(`/tg${TG_TOKEN.replace(':', '_')}`, async (_req, res) => {
                     bot.sendMessage(chatId, msg.join('\n'), replyMarkup(keyboard));
                 }
             } catch (error) {
-                console.log(error);
-                bot.sendMessage(chatId, error.message.slice(0, 512));
+                console.log(error.message);
+                bot.sendMessage(
+                    CHAT_ERROR_ID || chatId,
+                    [
+                        npm_package_name,
+                        error.message.slice(0, 512),
+                    ].join('\n')
+                )
             }
         } else if (_req.body.callback_query) {
             const callbackQuery = _req.body.callback_query;
@@ -59,7 +65,10 @@ router.post(`/tg${TG_TOKEN.replace(':', '_')}`, async (_req, res) => {
                 }
             } catch (error) {
                 console.log(error.message);
-                bot.sendMessage(chatId, error.message.slice(0, 512));
+                [
+                    npm_package_name,
+                    error.message.slice(0, 512),
+                ].join('\n')
             }
             await bot.answerCallbackQuery(callbackQuery.id);
         }
