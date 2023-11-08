@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { MessageComponentTypes } = require("discord-interactions");
 
-const { sendErrorToDiscord, sendMsgToDiscord } = require("./send_msg_func");
+const { sendErrorToDiscord, sendMsgToDiscord } = require("./send_msg_function");
 
 const { DISCORD_TOKEN } = process.env;
 

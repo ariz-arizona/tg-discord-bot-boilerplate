@@ -25,7 +25,7 @@ app.use('/', require('./adapters/discord.js'));
 app.use('/', require('./discord/test'));
 
 app.get('/', async (_req, res) => {
-    res.send(`Listening ${npm_package_name} on ${CURRENT_HOST}:${APP_PORT})`);
+    res.send(`Listening ${npm_package_name} on ${CURRENT_HOST}:${APP_PORT}`);
 });
 
 app.listen(APP_PORT, () => {

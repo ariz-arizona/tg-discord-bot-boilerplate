@@ -1,4 +1,4 @@
-const fetch = require("@vercel/fetch")(require("cross-fetch"));
+const fetch = require("cross-fetch");
 
 const { DISCORD_APPLICATION_ID, DISCORD_TOKEN } = process.env;
 

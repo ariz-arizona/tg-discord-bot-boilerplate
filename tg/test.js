@@ -1,11 +1,11 @@
 const testFunction = async (text) => {
-    const msg = [];
+    const txt = [];
     const keyboard = [];
 
-    msg.push('test');
-    msg.push(text);
+    txt.push('test');
+    txt.push(text);
 
-    return { msg, keyboard }
+    return { txt, keyboard }
 }
 
 module.exports = testFunction;
